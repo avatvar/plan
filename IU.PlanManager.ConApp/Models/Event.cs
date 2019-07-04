@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace IU.PlanManager.ConApp.Models
 {
@@ -42,5 +43,14 @@ namespace IU.PlanManager.ConApp.Models
         /// Место 
         /// </summary>
         public string Place { get; set; }
+
+        public override string ToString()
+        {
+            var fields = new List<string>() { StartDate?.ToShortDateString(), Title , Place};
+
+            fields.RemoveAll(s => string.IsNullOrWhiteSpace(s));
+
+            return string.Join(", ", fields);
+        }
     }
 }

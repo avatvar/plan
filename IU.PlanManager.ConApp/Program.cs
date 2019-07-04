@@ -10,9 +10,11 @@ namespace IU.PlanManager.ConApp
         {
 
             IStore<Event> store = null;
-            store = new EventStore();
+            store = new EventFileStore();
 
-            while (true)
+            var goWork = true;
+
+            while (goWork)
             {
                 Console.WriteLine("1. Добавь событие");
                 Console.WriteLine("2. Показать все события");
@@ -29,17 +31,26 @@ namespace IU.PlanManager.ConApp
                     case "1":
                         {
                             // если выбрано Добавить
+                            var evt = new Event();
+
                             // просим ввести title и дату
                             Console.WriteLine("Введите тему");
                             var line = Console.ReadLine();
-                            // сохраняем в хранилище
-                            var evt = new Event();
                             evt.Title = line;
+
+                            Console.WriteLine("Введите дату в dd-mm-yyyy");
+                            DateTime date;
+                            if(DateTime.TryParse(Console.ReadLine(), out date))
+                            {
+                                evt.StartDate = date;
+                            }
 
                             // сохраняем в хранилище
                             store.Add(evt);
+
                             // пишем , что все хорошо
-                            Console.WriteLine("Всё хорошо");
+                            Console.Clear();
+                            Console.WriteLine($"В хранилище {store.Entities.Count()}");
 
                             break;
                         }
@@ -51,8 +62,10 @@ namespace IU.PlanManager.ConApp
                             foreach (var evt in store.Entities)
                             {
                                 // выводим их на экран
-                                Console.WriteLine($"{evt.Uid} {evt.Title}");
+                                Console.WriteLine($"{evt}");
                             }
+                            Console.WriteLine("---");
+                            Console.WriteLine();
                             break;
                         }
                     default:
