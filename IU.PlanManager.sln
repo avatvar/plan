@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IU.PlanManager.ConApp", "IU.PlanManager.ConApp\IU.PlanManager.ConApp.csproj", "{DCAB88D2-06EE-46AB-9362-CCE4873E0753}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IU.Plan.Web", "IU.Plan.Web\IU.Plan.Web.csproj", "{56E163FE-1B46-4C7C-B232-A4A91B6000C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DCAB88D2-06EE-46AB-9362-CCE4873E0753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCAB88D2-06EE-46AB-9362-CCE4873E0753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCAB88D2-06EE-46AB-9362-CCE4873E0753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E163FE-1B46-4C7C-B232-A4A91B6000C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E163FE-1B46-4C7C-B232-A4A91B6000C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E163FE-1B46-4C7C-B232-A4A91B6000C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E163FE-1B46-4C7C-B232-A4A91B6000C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

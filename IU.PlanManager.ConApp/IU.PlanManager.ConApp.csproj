@@ -49,6 +49,7 @@
     <Compile Include="Impl\BaseFileStore.cs" />
     <Compile Include="Impl\UserFileStore.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Interfaces\IUserStore.cs" />
     <Compile Include="Interfaces\IStore.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Impl\EventFileStore.cs" />

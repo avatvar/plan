@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Календарь";
+
+    var today = DateTime.Today;
+
+    var colCount = 7;
+
+    var limit = DateTime.DaysInMonth(today.Year, today.Month);
+    var count = 0;
+    var currentDay = today.Day - 1;
+    var rowCount = (int)Math.Ceiling(limit * 1d / colCount);
+}
+
+<h2>Календарь</h2>
+
+<div class="table-responsive">
+
+    <table class="table table-bordered">
+        <tr>
+            <th>понедельник</th>
+            <th>вторник</th>
+            <th>среда</th>
+            <th>четверг</th>
+            <th>пятница</th>
+            <th>суббота</th>
+            <th>воскресенье</th>
+        </tr>
+        @for (int i = 0; i < rowCount; i++)
+        {
+            <tr>
+                @for (int j = 0; j < colCount; j++)
+                {
+                    var tdClass = count == currentDay 
+                        ? "bg-info" 
+                        : "";
+                    
+                     <td class="@(tdClass)">
+                        @(count++ < limit ? $"{count}" : "")
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+
+</div>
+
+
+<div>
+
+</div>
