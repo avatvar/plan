@@ -1,15 +1,28 @@
-﻿@{
+﻿@model CalendarViewModel
+@using IU.Plan.Web.Models
+
+@{
     ViewBag.Title = "Календарь";
 
     var today = DateTime.Today;
-
-    var colCount = 7;
-
-    var limit = DateTime.DaysInMonth(today.Year, today.Month);
-    var count = 0;
     var currentDay = today.Day - 1;
-    var rowCount = (int)Math.Ceiling(limit * 1d / colCount);
+    var count = 0;
 }
+
+@helper PrintEvents(int dayNumber, DateTime today)
+{
+    if (dayNumber < Model.Limit)
+    {
+        DateTime day = new DateTime(today.Year, today.Month, dayNumber, 0, 0, 0);
+
+        var dayEvent = Model.Events.FirstOrDefault(evt => evt.StartDate == day);
+        if (dayEvent != null)
+        {
+            <div>@dayEvent.Title</div>
+        }
+    }
+}
+
 
 <h2>Календарь</h2>
 
@@ -25,17 +38,18 @@
             <th>суббота</th>
             <th>воскресенье</th>
         </tr>
-        @for (int i = 0; i < rowCount; i++)
+        @for (int i = 0; i < Model.RowCount; i++)
         {
             <tr>
-                @for (int j = 0; j < colCount; j++)
+                @for (int j = 0; j < Model.ColCount; j++)
                 {
-                    var tdClass = count == currentDay 
-                        ? "bg-info" 
+                    var tdClass = count == currentDay
+                        ? "bg-danger"
                         : "";
-                    
-                     <td class="@(tdClass)">
-                        @(count++ < limit ? $"{count}" : "")
+
+                    <td class="@(tdClass)">
+                        @(count++ < Model.Limit ? $"{count}" : "")
+                        @PrintEvents(count, today)
                     </td>
                 }
             </tr>
