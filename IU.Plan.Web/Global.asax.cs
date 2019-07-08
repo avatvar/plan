@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using IU.Plan.Web.Binding;
 
 namespace IU.Plan.Web
 {
@@ -12,6 +13,8 @@ namespace IU.Plan.Web
     {
         protected void Application_Start()
         {
+            ValueProviderFactories.Factories.Add(new BrowserValueProviderFactory());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
