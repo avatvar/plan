@@ -3,57 +3,20 @@
 @{
     ViewBag.Title = "Details";
 }
-<div style="background:orange">
-    <h4>Event</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Uid)
-        </dt>
+<div class="col-lg-10" style="width:500px">
+    <h4>@Html.DisplayFor(model => model.Title)</h4>
+    <hr/>
+    <p>
+        @Html.DisplayFor(model => model.Description)
+    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Uid)
-        </dd>
+    <p>
+        @Html.DisplayFor(model => model.StartDate)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+        @Html.DisplayFor(model => model.EndDate)
+    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Place)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Place)
-        </dd>
-
-    </dl>
+    <p>
+        @Html.DisplayFor(model => model.Place)
+    </p>
 </div>

@@ -13,7 +13,6 @@ namespace IU.PlanManager.ConApp.Models
         /// </summary>
         public Event()
         {
-            Uid = Guid.NewGuid();
         }
 
         /// <inheritdoc/>
