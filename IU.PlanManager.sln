@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IU.PlanManager.ConApp", "IU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IU.Plan.Web", "IU.Plan.Web\IU.Plan.Web.csproj", "{56E163FE-1B46-4C7C-B232-A4A91B6000C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IU.PlanManager.Core", "IU.PlanManager.Core\IU.PlanManager.Core.csproj", "{7692FFD6-8871-490C-8C29-61D5AFCE09E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IU.PlanManager.Extensions", "IU.PlanManager.Extensions\IU.PlanManager.Extensions.csproj", "{1A6A3BFB-388C-45C7-BB88-E86E2996AEA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{56E163FE-1B46-4C7C-B232-A4A91B6000C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56E163FE-1B46-4C7C-B232-A4A91B6000C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56E163FE-1B46-4C7C-B232-A4A91B6000C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7692FFD6-8871-490C-8C29-61D5AFCE09E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7692FFD6-8871-490C-8C29-61D5AFCE09E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7692FFD6-8871-490C-8C29-61D5AFCE09E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7692FFD6-8871-490C-8C29-61D5AFCE09E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A6A3BFB-388C-45C7-BB88-E86E2996AEA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6A3BFB-388C-45C7-BB88-E86E2996AEA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6A3BFB-388C-45C7-BB88-E86E2996AEA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6A3BFB-388C-45C7-BB88-E86E2996AEA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

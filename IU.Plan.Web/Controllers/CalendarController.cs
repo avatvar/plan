@@ -4,26 +4,32 @@ using System.Web.Mvc;
 using IU.Plan.Web.Models;
 using IU.PlanManager.ConApp;
 using IU.PlanManager.ConApp.Models;
+using IU.PlanManager.Extensions;
 
 namespace IU.Plan.Web.Controllers
 {
     public class CalendarController : Controller
     {
-        private IStore<Event> store = new EventFileStore();
+        private IStore<Event> eventStore = new EventFileStore();
 
+        private IStore<Activity> activityStore = new BaseFileStore<Activity>();
+        
         // GET: Calendar
-        public ActionResult Index(DateTime yearMonthDay, string browser)
+        public ActionResult Index(DateTime yearMonthDay)
         {
-            ViewBag.bro = browser;
-
             var today = DateTime.Today;
 
             var startMonth = yearMonthDay;
             var endMonth = startMonth.AddMonths(1);
 
-            var events = store.Entities.Where(evt =>
+            var events = eventStore.Entities.Where(evt =>
                    evt.StartDate >= startMonth && evt.StartDate < endMonth
-                );
+                ).ToList();
+
+            events.AddRange(activityStore.Entities.Where(evt =>
+                 evt.StartDate >= startMonth && evt.StartDate < endMonth
+                )
+            );
 
             var model = new CalendarViewModel
             {
