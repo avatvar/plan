@@ -25,6 +25,18 @@ namespace IU.Plan.Web.Controllers
             return PartialView("Details", evt);
         }
 
+        // GET: Event
+        public PartialViewResult Create()
+        {
+            var evt = new Event()
+            {
+                Uid = Guid.NewGuid()
+            };
+
+            var model = new EventEditModel(evt);
+
+            return PartialView("EventEdit", model);
+        }
 
         // GET: Event
         public PartialViewResult Edit(Guid uid)

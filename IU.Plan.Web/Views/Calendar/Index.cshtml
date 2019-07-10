@@ -60,6 +60,7 @@
                     width: 'auto',
                     buttons: {
                         "Редактировать": function () {
+                            $(this).dialog("close");
                             openEditPopup(uid);
                         },
                         Ok: function () {
@@ -72,16 +73,18 @@
 
     }
 
-    function saveEvent() {
+    function saveEvent(callback) {
         $.ajax({
             url: '/Event/Save',
             type: 'post',
             data: $('form#eventSaveForm').serialize(),
             success: function (data) {
                 $('#EditPopup').html(data);
+                if (callback) {
+                    setTimeout(callback, 1 * 1000);
+                }
             }
         });
-
     }
 
     function openEditPopup(uid) {
@@ -90,13 +93,15 @@
             url: '/Event/Edit?uid=' + uid,
             success: function (data) {
                 $('#EditPopup').html(data);
-                $("#EditPopup").dialog({
+                var editPopup = $("#EditPopup").dialog({
                     modal: true,
                     width: 'auto',
                     buttons: {
                         "Сохранить": function () {
-                            saveEvent();
-                            //$(this).dialog("close");
+                            saveEvent(function () {
+                                editPopup.dialog("close");
+                                document.location.reload();
+                            });
                         },
                         Cancel: function () {
                             $(this).dialog("close");
