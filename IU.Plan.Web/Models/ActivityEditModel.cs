@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using IU.PlanManager.Extensions;
 
 namespace IU.Plan.Web.Models
@@ -18,6 +20,10 @@ namespace IU.Plan.Web.Models
             }
 
             Budget = evt.Budget;
+            if (Budget != null)
+            {
+                BudgetUid = Budget.Uid;
+            }
             PeopleAmount = evt.PeopleAmount;
         }
 
@@ -25,6 +31,7 @@ namespace IU.Plan.Web.Models
         public new Activity GetEvent()
         {
             var budget = Budget;
+            budget.Uid = BudgetUid;
 
             var activity = new Activity()
             {
@@ -41,6 +48,9 @@ namespace IU.Plan.Web.Models
 
             return activity;
         }
+
+        [HiddenInput(DisplayValue = false)]
+        public Guid BudgetUid { get; set; }
 
         /// <summary>
         /// Заголовок

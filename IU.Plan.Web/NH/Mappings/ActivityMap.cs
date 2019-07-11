@@ -8,7 +8,7 @@ namespace IU.Plan.Web.Mappings
         public ActivityMap()
         {
             Map(act => act.PeopleAmount);
-            HasOne(self => self.Budget);
+            HasOne(self => self.Budget).Cascade.All().Not.LazyLoad();
         }
     }
 }

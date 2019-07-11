@@ -9,7 +9,7 @@ namespace IU.Plan.Web.Controllers
 {
     public class ActivityController : Controller
     {
-        private IStore<Activity> store = new BaseDBStore<Activity>();
+        private IStore<Activity> store = new EventDBStore<Activity>();
 
         public PartialViewResult MiniDetails(Guid uid)
         {
@@ -56,6 +56,20 @@ namespace IU.Plan.Web.Controllers
             }
 
             return PartialView("Edit", model);
+        }
+
+        [HttpPost]
+        public JsonResult Delete(Guid uid)
+        {
+            try
+            {
+                store.Delete(uid);
+                return Json(new { Result = "Ok"} );
+            }
+            catch(Exception ex)
+            {
+                return Json(new { Error = ex.Message });
+            }
         }
     }
 }

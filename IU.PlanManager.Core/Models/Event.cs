@@ -51,5 +51,18 @@ namespace IU.PlanManager.ConApp.Models
 
             return string.Join(", ", fields);
         }
+
+        public virtual EntityLifeStatus LifeStatus { get; set; }
     }
+
+
+    /// <summary>
+    /// Статус сущности
+    /// </summary>
+    public enum EntityLifeStatus
+    {
+        Active,
+        Deleted
+    }
+
 }

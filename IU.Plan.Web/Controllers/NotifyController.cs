@@ -9,7 +9,7 @@ namespace IU.Plan.Web.Controllers
 {
     public class NotifyController : Controller
     {
-        private IStore<Event> store = new EventDBStore();
+        private IStore<Event> store = new EventDBStore<Event>();
 
         // GET: Notify
         public long Info(bool isToday = false)

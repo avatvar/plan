@@ -10,7 +10,7 @@ namespace IU.Plan.Web.NH
     public class BaseDBStore<T> : IStore<T>
         where T : class, IEntity
     {
-        public IEnumerable<T> Entities
+        public virtual IEnumerable<T> Entities
         {
             get
             {
@@ -26,7 +26,7 @@ namespace IU.Plan.Web.NH
             Update(entity);
         }
 
-        public void Delete(Guid uid)
+        public virtual void Delete(Guid uid)
         {
             var session = NHibernateHelper.GetCurrentSession();
             try

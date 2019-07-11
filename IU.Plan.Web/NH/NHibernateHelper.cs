@@ -11,8 +11,6 @@ namespace IU.Plan.Web.NH
     {
         private const string CurrentSessionKey = "nhibernate.current_session";
         private static readonly ISessionFactory _sessionFactory;
-        private static ISession _session;
-
 
         static NHibernateHelper()
         {
@@ -30,23 +28,31 @@ namespace IU.Plan.Web.NH
 
         public static ISession GetCurrentSession()
         {
-            if (_session == null)
+            var context = HttpContext.Current;
+            var currentSession = context.Items[CurrentSessionKey] as ISession;
+
+            if (currentSession == null)
             {
-                _session = _sessionFactory.OpenSession();
+                currentSession = _sessionFactory.OpenSession();
+                context.Items[CurrentSessionKey] = currentSession;
             }
-            return _session;
+
+            return currentSession;
         }
 
         public static void CloseSession()
         {
-            if (_session == null)
+            var context = HttpContext.Current;
+            var currentSession = context.Items[CurrentSessionKey] as ISession;
+
+            if (currentSession == null)
             {
                 // No current session
                 return;
             }
 
-            _session.Close();
-            _session = null;
+            currentSession.Close();
+            context.Items.Remove(CurrentSessionKey);
         }
 
         public static void CloseSessionFactory()

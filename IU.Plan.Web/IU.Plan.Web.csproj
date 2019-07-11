@@ -150,14 +150,15 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NotifyController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Extensions\DayOfWeekExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\TaskMap.cs" />
-    <Compile Include="Mappings\ActivityMap.cs" />
-    <Compile Include="Mappings\MoneyMap.cs" />
-    <Compile Include="Mappings\EventMap.cs" />
+    <Compile Include="NH\Mappings\TaskMap.cs" />
+    <Compile Include="NH\Mappings\ActivityMap.cs" />
+    <Compile Include="NH\Mappings\MoneyMap.cs" />
+    <Compile Include="NH\Mappings\EventMap.cs" />
     <Compile Include="Models\CalendarViewModel.cs" />
     <Compile Include="Models\ActivityEditModel.cs" />
     <Compile Include="Models\EventEditModel.cs" />
@@ -219,6 +220,8 @@
     <Content Include="Views\Activity\Details.cshtml" />
     <Content Include="Views\Activity\Edit.cshtml" />
     <Content Include="Views\Activity\Save.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Money.cshtml" />
+    <Content Include="Views\Search\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Notify\" />

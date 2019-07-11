@@ -9,7 +9,7 @@ namespace IU.Plan.Web.Controllers
 {
     public class EventController : Controller
     {
-        private IStore<Event> store = new EventDBStore();
+        private IStore<Event> store = new EventDBStore<Event>();
 
         // GET: Event
         public ActionResult Details(Guid uid)
@@ -64,6 +64,21 @@ namespace IU.Plan.Web.Controllers
             }
 
             return PartialView("EventEdit", model);
+        }
+
+
+        [HttpPost]
+        public JsonResult Delete(Guid uid)
+        {
+            try
+            {
+                store.Delete(uid);
+                return Json(new { Result = "Ok" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Error = ex.Message });
+            }
         }
     }
 }

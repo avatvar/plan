@@ -13,6 +13,7 @@ namespace IU.Plan.Web.Mappings
             Map(evt => evt.StartDate).Nullable();
             Map(evt => evt.EndDate).Nullable();
             Map(evt => evt.Place);
+            Map(evt => evt.LifeStatus);
         }
     }
 }

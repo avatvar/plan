@@ -11,9 +11,9 @@ namespace IU.Plan.Web.Controllers
 {
     public class CalendarController : Controller
     {
-        private IStore<Event> eventStore = new EventDBStore();
+        private IStore<Event> eventStore = new EventDBStore<Event>();
 
-        private IStore<Activity> activityStore = new BaseDBStore<Activity>();
+        private IStore<Activity> activityStore = new EventDBStore<Activity>();
 
         // GET: Calendar
         public ActionResult Index(DateTime yearMonthDay)
