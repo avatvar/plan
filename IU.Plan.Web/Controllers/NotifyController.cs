@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using IU.Plan.Web.NH;
 using IU.PlanManager.ConApp;
 using IU.PlanManager.ConApp.Models;
 
@@ -8,7 +9,7 @@ namespace IU.Plan.Web.Controllers
 {
     public class NotifyController : Controller
     {
-        private IStore<Event> store = new EventFileStore();
+        private IStore<Event> store = new EventDBStore();
 
         // GET: Notify
         public long Info(bool isToday = false)

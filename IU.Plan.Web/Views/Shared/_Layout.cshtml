@@ -46,7 +46,7 @@
             setInterval(function () {
                 checkEvents('?isToday=true', 'notify_today');
                 checkEvents('', 'notify');
-            }, 3 * 1000);
+            }, 60 * 1000);
         });
 
         function checkEvents(url, id) {

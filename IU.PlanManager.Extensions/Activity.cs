@@ -30,6 +30,11 @@ namespace IU.PlanManager.Extensions
         public virtual Guid Uid { get; set; }
 
         /// <summary>
+        /// Мероприятие
+        /// </summary>
+        public virtual Activity Activity { get; set; }
+
+        /// <summary>
         /// Валюта
         /// </summary>
         public virtual Currency Currency { get; set; }

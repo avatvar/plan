@@ -55,6 +55,10 @@
       <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NHibernate, Version=5.2.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.5.2.5\lib\net461\NHibernate.dll</HintPath>
     </Reference>
@@ -119,9 +123,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -145,6 +146,7 @@
     <Compile Include="Binding\BrowserValueProvider.cs" />
     <Compile Include="Binding\BrowserValueProviderFactory.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NotifyController.cs" />
@@ -152,9 +154,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappings\TaskMap.cs" />
+    <Compile Include="Mappings\ActivityMap.cs" />
+    <Compile Include="Mappings\MoneyMap.cs" />
+    <Compile Include="Mappings\EventMap.cs" />
     <Compile Include="Models\CalendarViewModel.cs" />
+    <Compile Include="Models\ActivityEditModel.cs" />
     <Compile Include="Models\EventEditModel.cs" />
     <Compile Include="Modules\TimerModule.cs" />
+    <Compile Include="NH\BaseDBStore.cs" />
+    <Compile Include="NH\EventDBStore.cs" />
+    <Compile Include="NH\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +216,9 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Activity.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Event.cshtml" />
+    <Content Include="Views\Activity\Details.cshtml" />
+    <Content Include="Views\Activity\Edit.cshtml" />
+    <Content Include="Views\Activity\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Notify\" />
