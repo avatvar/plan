@@ -9,9 +9,9 @@ namespace IU.PlanManager.ConApp
     public interface IUserStore : IStore<User>
     {
         /// <summary>
-        /// Получить пользователей по имени
+        /// Получить пользователя по имени
         /// </summary>
         /// <param name="username">Имя пользователя</param>
-        IEnumerable<User> GetByName(string username);
+        User GetByName(string username);
     }
 }

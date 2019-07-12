@@ -145,16 +145,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Binding\BrowserValueProvider.cs" />
     <Compile Include="Binding\BrowserValueProviderFactory.cs" />
+    <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\EventController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\NotifyController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Extensions\DayOfWeekExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MeetingEditModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="NH\UserDBStore.cs" />
+    <Compile Include="NH\Mappings\MeetingMap.cs" />
+    <Compile Include="NH\Mappings\ParticipantMap.cs" />
+    <Compile Include="NH\Mappings\UserMap.cs" />
     <Compile Include="NH\Mappings\TaskMap.cs" />
     <Compile Include="NH\Mappings\ActivityMap.cs" />
     <Compile Include="NH\Mappings\MoneyMap.cs" />
@@ -183,6 +190,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Code\Helpers.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -194,6 +202,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -205,9 +214,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\About.cshtml" />
+    <Content Include="Views\Login\Contact.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
@@ -222,6 +231,11 @@
     <Content Include="Views\Activity\Save.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Money.cshtml" />
     <Content Include="Views\Search\List.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Meeting\Details.cshtml" />
+    <Content Include="Views\Meeting\Edit.cshtml" />
+    <Content Include="Views\Meeting\Save.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Meeting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Notify\" />

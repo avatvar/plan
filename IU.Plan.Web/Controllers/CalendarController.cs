@@ -9,6 +9,7 @@ using IU.PlanManager.Extensions;
 
 namespace IU.Plan.Web.Controllers
 {
+    [Authorize]
     public class CalendarController : Controller
     {
         private IStore<Event> eventStore = new EventDBStore<Event>();

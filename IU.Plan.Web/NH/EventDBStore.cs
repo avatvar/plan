@@ -36,8 +36,8 @@ namespace IU.Plan.Web.NH
             return session.QueryOver<T>()
                 .Where(entity => entity.LifeStatus == EntityLifeStatus.Active)
                 .And(Restrictions.Or(
-                        Restrictions.Like("Title", search, MatchMode.Anywhere),
-                        Restrictions.Like("Description", search, MatchMode.Anywhere)))
+                        Restrictions.Like(nameof(Event.Title), search, MatchMode.Anywhere),
+                        Restrictions.Like(nameof(Event.Description), search, MatchMode.Anywhere)))
                 .List();
         }
     }

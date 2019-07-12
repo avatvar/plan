@@ -40,29 +40,15 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script type="text/javascript">
+    @Scripts.Render("~/Scripts/site.js")
 
+    <script type="text/javascript">
         $(document).ready(function () {
             setInterval(function () {
                 checkEvents('?isToday=true', 'notify_today');
                 checkEvents('', 'notify');
             }, 60 * 1000);
         });
-
-        function checkEvents(url, id) {
-            $.ajax({
-                url: '/Notify/Info' + url,
-                type: 'get',
-                success: function (data) {
-                    if (data > 0) {
-                        $('#' + id + ' span').html(data);
-                    } else {
-                        $('#' + id + ' span').html('');
-                    }
-                }
-            });
-        }
-
     </script>
 </body>
 </html>

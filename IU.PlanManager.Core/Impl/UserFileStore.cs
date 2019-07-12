@@ -10,9 +10,9 @@ namespace IU.PlanManager.ConApp.Models
     public class UserFileStore : BaseFileStore<User>, IUserStore
     {
         /// <inheritdoc/>
-        public IEnumerable<User> GetByName(string username)
+        public User GetByName(string username)
         {
-            return Entities.Where(
+            return Entities.FirstOrDefault(
                 user =>
                 user.Status != UserStatus.Deleted &&
                 user.Name.Contains(username)

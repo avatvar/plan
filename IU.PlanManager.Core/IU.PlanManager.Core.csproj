@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Impl\BaseFileStore.cs" />
     <Compile Include="Impl\EventFileStore.cs" />
     <Compile Include="Impl\EventStore.cs" />
