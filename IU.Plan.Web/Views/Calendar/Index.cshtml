@@ -188,15 +188,26 @@
         });
     }
 
-    function search() {
-        $.ajax({
-            url: '/Search/Filter',
-            type: 'post',
-            data: { "searchRequest": $("#searchRequest").val() },
-            success: function (data) {
-                $('#searchResult').html(data);
-            }
-        });
+    window.timer = 0;
+
+    function search(force) {
+        var find = $("#searchRequest").val();
+        if (!!force && find.length >= 3) {
+
+            $.ajax({
+                url: '/Search/Filter',
+                type: 'post',
+                data: { "searchRequest": find },
+                success: function (data) {
+                    $('#searchResult').html(data);
+                }
+            });
+
+        }
+        else {
+            clearTimeout(window.timer);
+            window.timer = setTimeout(function () { search(true); }, 4 * 100);
+        }
     }
 
 </script>
@@ -219,9 +230,9 @@
     </div>
     <div class="col-md-4">
 
-        <form class="form-inline" onsubmit="search(); return false;">
+        <form class="form-inline" onsubmit="search(true); return false;">
             <div class="form-group">
-                <input type="search" class="form-control" id="searchRequest" placeholder="найти...">
+                <input type="search" class="form-control" id="searchRequest" onkeyup="search()" placeholder="найти...">
             </div>
             <input type="submit" class="btn btn-default" value="go" />
         </form>

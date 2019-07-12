@@ -33,13 +33,12 @@ namespace IU.Plan.Web.NH
         public IEnumerable<T> Find(string search)
         {
             var session = NHibernateHelper.GetCurrentSession();
-            var query = session.QueryOver<T>()
-                .Where(entity => entity.LifeStatus == EntityLifeStatus.Active).
-                And(Restrictions.Or(
+            return session.QueryOver<T>()
+                .Where(entity => entity.LifeStatus == EntityLifeStatus.Active)
+                .And(Restrictions.Or(
                         Restrictions.Like("Title", search, MatchMode.Anywhere),
                         Restrictions.Like("Description", search, MatchMode.Anywhere)))
                 .List();
-            return query;
         }
     }
 }
