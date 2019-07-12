@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using IU.PlanManager.ConApp.Models;
+using NHibernate.Criterion;
 
 namespace IU.Plan.Web.NH
 {
+    public interface IEventStore<T> where T : Event
+    {
+        IEnumerable<T> Find(string search);
+    }
+
     /// <summary>
     /// Хранилище событий <see cref="Event"/>
     /// </summary>
-    public class EventDBStore<T> : BaseDBStore<T>
-        where T :  Event
+    public class EventDBStore<T> : BaseDBStore<T>, IEventStore<T>
+        where T : Event
     {
-        public override IEnumerable<T> Entities => 
+        public override IEnumerable<T> Entities =>
             base.Entities.Where(ent => ent.LifeStatus == EntityLifeStatus.Active);
 
         public override void Delete(Guid uid)
@@ -22,6 +28,18 @@ namespace IU.Plan.Web.NH
                 evt.LifeStatus = EntityLifeStatus.Deleted;
                 Update(evt);
             }
+        }
+
+        public IEnumerable<T> Find(string search)
+        {
+            var session = NHibernateHelper.GetCurrentSession();
+            var query = session.QueryOver<T>()
+                .Where(entity => entity.LifeStatus == EntityLifeStatus.Active).
+                And(Restrictions.Or(
+                        Restrictions.Like("Title", search, MatchMode.Anywhere),
+                        Restrictions.Like("Description", search, MatchMode.Anywhere)))
+                .List();
+            return query;
         }
     }
 }

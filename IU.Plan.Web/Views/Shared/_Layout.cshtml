@@ -55,16 +55,14 @@
                 type: 'get',
                 success: function (data) {
                     if (data > 0) {
-                        $('#' + id).find('span').html(data);
+                        $('#' + id + ' span').html(data);
                     } else {
-                        $('#' + id).find('span').html('');
+                        $('#' + id + ' span').html('');
                     }
                 }
             });
         }
 
     </script>
-
-
 </body>
 </html>

@@ -19,6 +19,10 @@
     @*@(acts?.Budget?.Value) @(acts?.Budget?.Currency)*@
 </span>
 <style>
+    hr {
+        margin-top: 0px;
+    }
+
     .overtext {
         text-overflow: ellipsis;
         overflow: hidden;
@@ -47,16 +51,33 @@
     </div>
 }
 
+@helper addPlus(string type, string color)
+{
+    <a href="#" style="color:@color" onclick="openCreatePopup('@type')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+}
+
 @helper PrintCell(int count, DateTime today)
 {
-    var tdClass = Model.StartDay.AddDays(count - 1) == today ? "bg-danger" : "";
+    var tdClass = Model.StartDay.AddDays(count - 1) == today ? "bg-success" : "";
+
+    if (count > Model.Limit)
+    {
+        tdClass = "bg-warning";
+    }
+
     <td class="@(tdClass)">
-        <div style="display:inline;">
-            @(count <= Model.Limit ? $"{count}" : "")
-            <a href="#" onclick="openCreatePopup('Event')">+</a>
-            <a href="#" onclick="openCreatePopup('Activity')">+</a>
-            <a href="#" onclick="openCreatePopup('Task')">+</a>
-        </div>
+
+        @if (count <= Model.Limit)
+        {
+            <div style="display:inline;">
+                @count
+                @addPlus("Event", "#5cb85c")
+                @addPlus("Activity", "#5bc0de")
+                @addPlus("Task", "#f0ad4e")
+
+            </div>
+            <hr />
+        }
         @PrintEvents(count, today)
     </td>
 }
@@ -204,7 +225,7 @@
             </div>
             <input type="submit" class="btn btn-default" value="go" />
         </form>
-        
+
     </div>
 </div>
 
